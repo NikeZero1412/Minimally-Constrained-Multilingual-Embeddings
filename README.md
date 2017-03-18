@@ -1,1 +1,1 @@
-# Multi-Lingual-Representations-for-CrossLingual-NLP-Artificial-Code-Switching-
+# Multi-Lingual Representations for CrossLingual NLP via Artificial Code-Switching
