@@ -75,25 +75,13 @@ ENG_DIR = os.path.join(os.getcwd(),"data/English_Wiki")
 ESP_DIR = os.path.join(os.getcwd(),"wikiextractor/Spanish_Wiki")
 FRE_DIR = os.path.join(os.getcwd(),"wikiextractor/French_Wiki")
 ITA_DIR = os.path.join(os.getcwd(),"wikiextractor/Italian_Wiki")
+
 # File list in each directory
 
 ENG_filenames=os.listdir(ENG_DIR)
 ESP_filenames=os.listdir(ESP_DIR)
 FRE_filenames=os.listdir(FRE_DIR)
 ITA_filenames=os.listdir(ITA_DIR)
-
-
-# Global list variable for English sentences after processing
-LAN_sentences = []
-# Global list variable for Spanish sentences after processing
-ESP_sentences = []
-# Global list variable for French sentences after processing
-FRE_sentences = []
-# Global list variable for Italian sentences after processing
-ITA_sentences = []
-
-
-
 
 def preprocess(content):
     """
