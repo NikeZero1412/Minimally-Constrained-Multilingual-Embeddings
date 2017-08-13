@@ -103,3 +103,40 @@ map_wiki()
 
 # java -Xmx6g -XX:-UseGCOverheadLimit -cp /path_to_CoreNLP/classes:/path_to_CoreNLP/stanford-corenlp-models-current.jar
 #  edu.stanford.nlp.process.PTBTokenizer -ioFileList -preserveLines eng_mapping.txt
+
+
+def join_corpus():
+    if args.lang == "en":
+        DIR = ENG_DIR
+        PATH = ENG_PATH
+        TOK = ENG_TOKEN
+        filename = "eng_mapping.txt"
+        corpus="wikipedia_en"
+    elif args.lang == "fr":
+        DIR = FRE_DIR
+        PATH = FRE_PATH
+        TOK = FRE_TOKEN
+        filename = "fre_mapping.txt"
+        corpus = "wikipedia_fr"
+    else:
+        DIR = RUS_DIR
+        PATH = RUS_PATH
+        TOK = RUS_TOKEN
+        filename = "rus_mapping.txt"
+        corpus = "wikipedia_ru"
+
+    articles = os.listdir(TOK)
+    # make IO list file
+    print("Combining all articles into one corpus file for % s in %s" %(args.lang,TOK))
+    with open(os.path.join(DATA_DIR, corpus),mode="w",encoding="utf-8") as f:
+        for s in articles:
+            print("Copying :",s)
+            with open(os.path.join(TOK, s), mode='r', encoding='utf-8') as doc:
+                content = doc.read()
+                soup = BeautifulSoup(content, 'html.parser')
+                data = soup.get_text().replace("\n\n"," ")
+                f.write(data)
+        f.close()
+
+
+join_corpus()
